@@ -35,5 +35,26 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    
+    //OPTION MENU
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId() == R.id.menuMainRegisterItem) {
+            //Register Cliked
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.mainContent, new RegisterFragment())
+                    .commit();
+
+            return true;
+        } else if (item.getItemId() == R.id.menuMainLoginItem) {
+            // Login Clicked
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.mainContent, new LoginFragment())
+                    .commit();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
