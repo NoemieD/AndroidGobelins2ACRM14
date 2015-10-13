@@ -9,19 +9,29 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.firebase.client.AuthData;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 import com.gobelinscrm14.noemiediaz.userappcrm14.user.LoginFragment;
 import com.gobelinscrm14.noemiediaz.userappcrm14.user.RegisterFragment;
+import com.gobelinscrm14.noemiediaz.userappcrm14.user.User;
 import com.gobelinscrm14.noemiediaz.userappcrm14.user.UserActivity;
 
-public class MainActivity extends AppCompatActivity implements LoginFragment.LoginListener {
+import java.util.Map;
+
+public class MainActivity extends AppCompatActivity implements LoginFragment.LoginListener, Authentification.FirebaseListener {
 
 
     private static final String TAG = "mainActivity";
+    final String EXTRA_LOGIN = "user_login";
+    final String EXTRA_PASSWORD = "user_password";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         //ADD TOOLBAR
         Toolbar mtoolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -33,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
                 .add(R.id.mainContent, new LoginFragment())
                 .commit();
     }
+
 
     //CREATE MENU
     @Override
@@ -64,11 +75,25 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onLoginClicked(CharSequence loginEmail, CharSequence passwordName) {
+        Log.d(TAG, loginEmail.toString() + passwordName.toString());
+        Authentification.getInstance().authenticate(loginEmail.toString(),passwordName.toString(),this);
+    }
 
     @Override
-    public void onLoginClicked(CharSequence loginName, CharSequence passwordName) {
-        Log.d(TAG, loginName.toString() + passwordName.toString());
+    public void onSucessAuth(AuthData authData) {
         Intent intent = new Intent(MainActivity.this, UserActivity.class);
         startActivity(intent);
+        Authentification.getInstance().getLogUser();
     }
+
+    @Override
+    public void onErrorAuth(FirebaseError firebaseError) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.mainContent, new RegisterFragment())
+                .commit();
+    }
+
 }

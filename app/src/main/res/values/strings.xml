@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">UserAppCrm14</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="LoginName">Login</string>
+    <string name="LoginPassword">Mot de passe</string>
+    <string name="LoginButtonSend">Login</string>
+    <string name="textLogin">Login</string>
+    <string name="registerText">Register</string>
+    <string name="registerName">Nom</string>
+    <string name="registerPassword">Password</string>
+    <string name="registerEmail">Mail</string>
+    <string name="buttonTxtRegister">Register</string>
+    <string name="userName">Nom</string>
+    <string name="userPasswordLabel">Mot de passe</string>
+    <string name="userEmailLabel">Email</string>
+</resources>

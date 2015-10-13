@@ -1,14 +1,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.gobelinscrm14.noemiediaz.userappcrm14.user.LoginFragment">
-
+    tools:context="com.gobelinscrm14.noemiediaz.userappcrm14.user.RegisterFragment">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/textLogin"
-        android:id="@+id/loginText"
+        android:text="@string/registerText"
+        android:id="@+id/registerText"
         android:layout_centerHorizontal="true" />
 
     <android.support.design.widget.TextInputLayout
@@ -21,9 +20,27 @@
         <EditText
             android:layout_width="@dimen/editLogin"
             android:layout_height="wrap_content"
-            android:id="@+id/loginEmail"
-            android:hint="@string/LoginName"
+            android:id="@+id/RegisterName"
+            android:hint="@string/registerName"
             />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTopMail"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal|center"
+        >
+
+        <EditText
+            android:layout_width="@dimen/editLogin"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/registerEmail"
+            android:hint="@string/registerEmail" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -32,16 +49,15 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        >
+        android:layout_centerHorizontal="true">
 
         <EditText
             android:layout_width="@dimen/editLogin"
             android:layout_height="wrap_content"
             android:inputType="numberPassword"
             android:ems="10"
-            android:id="@+id/loginPassword"
-            android:hint="@string/LoginPassword"
+            android:id="@+id/registerPassword"
+            android:hint="@string/registerPassword"
             />
 
     </android.support.design.widget.TextInputLayout>
@@ -49,10 +65,11 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/LoginButtonSend"
+        android:text="@string/buttonTxtRegister"
         android:id="@+id/loginButton"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>
