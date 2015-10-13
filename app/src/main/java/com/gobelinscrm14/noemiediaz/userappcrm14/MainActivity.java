@@ -12,6 +12,7 @@ import com.gobelinscrm14.noemiediaz.userappcrm14.user.RegisterFragment;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
             //Register Cliked
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.mainContent, new RegisterFragment())
+                    .replace(R.id.mainContent, new RegisterFragment())
                     .commit();
 
             return true;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             // Login Clicked
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.mainContent, new LoginFragment())
+                    .replace(R.id.mainContent, new LoginFragment())
                     .commit();
             return true;
         }
