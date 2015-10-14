@@ -7,19 +7,16 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.firebase.client.AuthData;
-import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.gobelinscrm14.noemiediaz.userappcrm14.user.LoginFragment;
 import com.gobelinscrm14.noemiediaz.userappcrm14.user.RegisterFragment;
-import com.gobelinscrm14.noemiediaz.userappcrm14.user.User;
 import com.gobelinscrm14.noemiediaz.userappcrm14.user.UserActivity;
 
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements LoginFragment.LoginListener, Authentification.FirebaseListener {
+public class MainActivity extends AppCompatActivity implements LoginFragment.LoginListener, Authentification.FirebaseListener, RegisterFragment.RegisterListener {
 
 
     private static final String TAG = "mainActivity";
@@ -82,10 +79,23 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
     }
 
     @Override
+    public void onRegisterClicked(CharSequence loginEmail, CharSequence passwordName) {
+        Log.d(TAG, loginEmail.toString() + passwordName.toString());
+        Authentification.getInstance().createUser(loginEmail.toString(),passwordName.toString(), this);
+    }
+
+    @Override
     public void onSucessAuth(AuthData authData) {
         Intent intent = new Intent(MainActivity.this, UserActivity.class);
         startActivity(intent);
-        Authentification.getInstance().getLogUser();
+    }
+
+    @Override
+    public void onSucessRegister(Map<String, Object>  stringObjectMap) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.mainContent, new LoginFragment())
+                .commit();
     }
 
     @Override

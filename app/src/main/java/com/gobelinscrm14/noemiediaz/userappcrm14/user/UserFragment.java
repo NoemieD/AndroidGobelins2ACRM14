@@ -22,7 +22,6 @@ public class UserFragment extends Fragment {
 
     //private LoginListener mListener;
     @Bind(R.id.userName) TextView mUserName;
-    @Bind(R.id.userPassword) TextView mUserPassword;
     @Bind(R.id.userEmail) TextView mUserMail;
 
 

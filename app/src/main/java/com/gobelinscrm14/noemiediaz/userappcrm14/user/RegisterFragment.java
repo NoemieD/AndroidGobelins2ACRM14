@@ -20,7 +20,7 @@ import butterknife.OnClick;
  */
 public class RegisterFragment extends Fragment {
 
-    //private LoginListener mListener;
+    private RegisterListener mListener;
     @Bind(R.id.registerText) TextView mRegisterName;
     @Bind(R.id.registerPassword) TextView mRegisterPassword;
     @Bind(R.id.registerEmail) TextView mRegisterEmail;
@@ -41,26 +41,26 @@ public class RegisterFragment extends Fragment {
     }
 
 
-   /* @Override
+    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         //context -> activity
         try{
-            mListener = (LoginListener) context;
+            mListener = (RegisterListener) context;
         } catch (ClassCastException exception){
             throw new ClassCastException(context.toString()
                     + "must implement LoginFragment.LoginListener");
         }
-    }*/
-
-   /* public interface LoginListener{
-        void onLoginClicked(CharSequence loginName, CharSequence passwordName, CharSequence emaile);
     }
 
-    @OnClick(R.id.loginButton)
+    public interface RegisterListener{
+        void onRegisterClicked(CharSequence loginName, CharSequence passwordName);
+    }
+
+    @OnClick(R.id.registerButton)
     public void onClick(View v){
-        mListener.onLoginClicked(mRegisterName.getText(), mRegisterPassword.getText(), mRegisterEmail.getText());
-    }*/
+        mListener.onRegisterClicked(mRegisterEmail.getText(), mRegisterPassword.getText());
+    }
 
 
 }

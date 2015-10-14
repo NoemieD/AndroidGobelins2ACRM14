@@ -29,33 +29,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/userPasswordLabel"
-        android:id="@+id/userPasswordLabel"
-        android:layout_marginTop="@dimen/marginTopUserName"
-        android:layout_below="@+id/userName"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/userPasswordLabel"
-        android:id="@+id/userPassword"
-        android:layout_below="@+id/userPasswordLabel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="@dimen/marginLeft"
-        android:layout_marginStart="@dimen/marginLeft" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/userEmailLabel"
         android:id="@+id/userEmailLabel"
         android:layout_marginTop="@dimen/marginTopUserName"
-        android:layout_below="@+id/userPassword"
+        android:layout_below="@+id/userName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

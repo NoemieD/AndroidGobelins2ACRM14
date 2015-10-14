@@ -5,6 +5,8 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.gobelinscrm14.noemiediaz.userappcrm14.user.User;
 
+import java.util.Map;
+
 /**
  * Created by noemiediaz on 13/10/15.
  */
@@ -38,11 +40,8 @@ public class Authentification {
             @Override
             public void onAuthenticated(AuthData authData) {
 
-                /*User user = new User();
-                user.setName(name);
-                user.setEmail(email);
-                setLogUser(user);*/
-
+                logUser = new User();
+                logUser.setEmail(authData.getProviderData().get("email").toString());
                 listener.onSucessAuth(authData);
             }
 
@@ -53,11 +52,27 @@ public class Authentification {
         });
     }
 
-    public interface FirebaseListener {
-        void onSucessAuth(AuthData authData);
-        void onErrorAuth(FirebaseError firebaseError);
+    public void createUser(String email, String password, final FirebaseListener listener){
+
+        myFirebaseRef.createUser(email, password, new Firebase.ValueResultHandler<Map<String, Object>>() {
+            @Override
+            public void onSuccess(Map<String, Object> stringObjectMap) {
+
+                listener.onSucessRegister(stringObjectMap);
+            }
+
+            @Override
+            public void onError(FirebaseError firebaseError) {
+
+            }
+        });
     }
 
 
+    public interface FirebaseListener {
+        void onSucessAuth(AuthData authData);
+        void onSucessRegister(Map<String, Object>  stringObjectMap);
+        void onErrorAuth(FirebaseError firebaseError);
+    }
 
 }
